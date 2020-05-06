@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	
+	<bean id="bidgelyUser"
+		class="com.springbootbasics.implementation.example.BidgelyUser">
+		<constructor-arg name="userName" value="Sourabh" />
+	    <constructor-arg name="userEmail" value="sourabh@bidgely.com" />
+	</bean>
+	
+	<bean id="serviceA"
+		class="com.springbootbasics.implementation.example.ServiceA">
+		<constructor-arg name="serviceName" value="Service A" />
+	    <constructor-arg name="serviceId" value="100" />
+	</bean>
+	
+	<bean id="serviceB"
+		class="com.springbootbasics.implementation.example.ServiceB">
+		<constructor-arg name="serviceName" value="Service B" />
+	    <constructor-arg name="serviceId" value="${abc}" />
+	</bean>
+	
+	<bean id="serviceImplementer"
+		class="com.springbootbasics.implementation.example.ServiceImplementer">
+		<constructor-arg name="serviceA" ref="serviceA" />
+	    <constructor-arg name="serviceB" ref="serviceB" />
+	</bean>
+	
+	<bean id="serviceImplementer2"
+		class="com.springbootbasics.implementation.example.ServiceImplementer"  autowire="byName">
+	</bean>
+
+</beans>
